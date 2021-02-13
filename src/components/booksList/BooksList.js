@@ -117,16 +117,6 @@ function BooksList() {
     const [urlMen, setUrlMen] = useState('https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png');
     const [urlWomen, setUrlWomen] = useState('https://icons-for-free.com/iconfiles/png/512/lady+user+woman+icon-1320166737958685846.png');
 
-    // useEffect(() => {
-    //     api.get('/Book/GetAllBooks')
-    //         .then(res => {
-    //             setBooks(res.data);
-
-    //         }).catch(err => {
-    //             console.log(err);
-    //         })
-    // }, []);
-
     const getAllBooks = () => {
         api.get('/Book/GetAllBooks')
             .then(res => {
@@ -161,20 +151,6 @@ function BooksList() {
             setListWhoLiked(res[0].data);
             setListWhoRead(res[1].data);
         })
-
-        // let res = api.get('Book/GetWhoLiked/' + id)
-        //     .then(res => {
-        //         console.log("Like: " + res.data);
-        //         setListWhoLiked(res.data);
-        //     })
-
-
-        // let res2 = api.get('Book/GetWhoRead/' + id)
-        //     .then(res => {
-        //         console.log("Read: " + res.data);
-        //         setListWhoRead(res.data);
-        //     })
-
     };
 
     const handleLikes = (id) => {
@@ -217,18 +193,13 @@ function BooksList() {
     };
 
     const handleSortChange = (e) => {
-        // console.log(e.target.value);
-        // if (e.target.value == 'asc') {
-            setBooks(books.sort((a, b) => a.bookName.localeCompare(b.bookName)));
-            setIsChangedPosts(!isChangedPosts);
-        // }
-        // setBooks(books.sort((a, b) => b.bookName.localeCompare(a.bookName)));
-        // setIsChangedPosts(!isChangedPosts);
+        setBooks(books.sort((a, b) => a.bookName.localeCompare(b.bookName)));
+        setIsChangedPosts(!isChangedPosts);
     }
 
     const handleSortDateChange = (e) => {
-            setBooks(books.sort((a, b) => a.postedTime.localeCompare(b.postedTime)));
-            setIsChangedPosts(!isChangedPosts);
+        setBooks(books.sort((a, b) => a.postedTime.localeCompare(b.postedTime)));
+        setIsChangedPosts(!isChangedPosts);
 
     }
 
@@ -273,13 +244,13 @@ function BooksList() {
 
             <Grid container justify="center" style={{ marginTop: "20px" }}>
                 <Grid container justify="center" style={{ marginTop: "20px" }}>
-                    <Button style={{ marginLeft: "20px" }} size="small" variant="contained" color="primary"  onClick={handleSortDateChange}>
+                    <Button style={{ marginLeft: "20px" }} size="small" variant="contained" color="primary" onClick={handleSortDateChange}>
                         Eklenme Tarihine Göre Sırala</Button>
 
                 </Grid>
 
                 <Grid container justify="center" style={{ marginTop: "20px" }}>
-                    <Button style={{ marginLeft: "20px" }} size="small" variant="contained" color="primary"  onClick={handleSortChange}>
+                    <Button style={{ marginLeft: "20px" }} size="small" variant="contained" color="primary" onClick={handleSortChange}>
                         Alfabetik Sırala</Button>
 
                 </Grid>
